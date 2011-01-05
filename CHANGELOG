@@ -1,0 +1,11 @@
+2011-01-05  Marvin Thomas Rabe  <m.rabe@echtzeitraum.de>
+
+* Changelog added.
+* Mistakes in language files fixed.
+* Renamed plugin name translation to "Modern Contact Form".
+* Error with captcha parameter solved.
+* Readme updated.
+
+2010-12-28  Marvin Thomas Rabe  <m.rabe@echtzeitraum.de>
+
+* Initial release.
