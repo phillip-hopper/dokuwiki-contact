@@ -1,11 +1,11 @@
 Modern Contact Plugin
 by Marvin Thomas Rabe (echtzeitraum.de)
 
-In the search for a contact form for dokuwiki I only found that of
+In the search for a contact form for Dokuwiki I only found that of
 Bob Baddeley (http://bobbaddeley.com/). It is quite good, although
 a bit outdated.
 
-You can find this plugin on github (https://github.com/h3ir/contactmodern).
+You can find this plugin on Github (https://github.com/h3ir/contactmodern).
 
 ===== Features =====
 
@@ -17,7 +17,7 @@ It is nearly the same form like that by Bob Baddeley, except:
   - Improved configuration.
   - Improved anti cache work-around.
   - Intelligent email address checkup.
-  - No annoying JavaScript-Alerts.
+  - No annoying JavaScript-alerts.
   - It jumps back to the form after submitting.
 
 If you have some more ideas, feel free to contact me.
@@ -34,7 +34,7 @@ You can receive the needed reCaptcha keys on http://www.google.com/recaptcha.
 
 ===== Installation =====
 
-Upload this folder to your dokuwiki plugin folder.
+Upload this folder to your Dokuwiki plugin folder.
 
 In //Admin -> Configuration settings// you have to set up a valid email address
 and (if you want) your reCaptcha keys. You can modify and redistribute it under
@@ -63,8 +63,7 @@ or join multiple of them with a | character:
 Available parameters:
 
 -> subj
-When the subject is specified in the parameters, it is not a field on the contact
-form. The plugin will only send email to one destination.
+When the subject is specified in the parameters, it is not a field on the contact form.
 
 -> to
 If you choose another profile, then emails will be send to the profile email address.
