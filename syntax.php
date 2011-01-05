@@ -93,11 +93,10 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 		$data = array();
 
 		//handle params
-		$params = explode('|',$match,2);
+		$params = explode('|',$match);
 		foreach($params as $param){
 			$splitparam = explode('=',$param);
-			if ($splitparam[0]=='to')$data['to'] = $splitparam[1];
-			else if ($splitparam[0]=='subj')$data['subj'] = $splitparam[1];
+			$data[$splitparam[0]] = $splitparam[1];
 		}
 		return $data;
 	}

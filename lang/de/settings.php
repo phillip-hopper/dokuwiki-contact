@@ -1,6 +1,6 @@
 <?php
 /**
- * german language file
+ * German language file
  *
  * @license GNU General Public License 3 <http://www.gnu.org/licenses/>
  * @author Marvin Thomas Rabe <m.rabe@echtzeitraum.de>

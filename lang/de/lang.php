@@ -1,6 +1,6 @@
 <?php
 /**
- * german language file
+ * German language file
  *
  * @license GNU General Public License 3 <http://www.gnu.org/licenses/>
  * @author Wolfgang Studer
@@ -13,7 +13,7 @@ $lang['direction']  = 'ltr';
 
 // for admin plugins, the menu prompt to be displayed in the admin menu
 // if set here, the plugin doesn't need to override the getMenuText() method
-$lang['menu'] = 'Kontaktformular';
+$lang['menu'] = 'Modernes Kontaktformular';
 
 // custom language strings for the plugin
 $lang["field"] = 'Feld';
