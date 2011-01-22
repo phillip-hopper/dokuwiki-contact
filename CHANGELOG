@@ -3,6 +3,7 @@
 * Fixed localisation bug.
 * Added localization for success message.
 * Renamed some variables.
+* reCaptcha field has now a red border, if there is an error.
 
 2011-01-05  Marvin Thomas Rabe  <m.rabe@echtzeitraum.de>
 

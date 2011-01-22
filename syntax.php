@@ -270,6 +270,9 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 
 		// Captcha
 		if($captcha) {
+			if($this->errorFlags["captcha"]) {
+				$ret .= '<style>#recaptcha_response_field { border: 1px solid #e18484 !important; }</style>';
+			}
 			$ret .= "<tr><td colspan=\"2\">"
 			. "<script type=\"text/javascript\">var RecaptchaOptions = { lang : '".$conf['lang']."', "
 			. "theme : '".$conf['plugin']['contactmodern']['recaptchalayout']."' };</script>"
@@ -303,7 +306,7 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 	 */
 	protected function _table_row($label, $name, $type) {
 		$value = (isset($_POST['submit-form-'.$this->formId]) && $this->status == 0)?$_POST[$name]:'';
-		$class = ($this->errorFlags[$name] == true)?'class="error_field"':'';
+		$class = ($this->errorFlags[$name])?'class="error_field"':'';
 		$row = '<tr><td>'.$label.'</td><td>';
 		if($type == 'textarea')
 			$row .= '<textarea name="'.$name.'" wrap="on" cols="40" rows="6" '.$class.'>'.$value.'</textarea>';
