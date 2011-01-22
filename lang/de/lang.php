@@ -35,6 +35,7 @@ $lang["error"]["valid_email"] = 'E-mail Adresse enthält eine ungültige eingabe
 $lang["error"]["valid_subject"] = 'Betreff enthält eine ungültige eingabe.';
 $lang["error"]["valid_to"] = 'Ziel Adresse enthält eine ungültige eingabe.';
 $lang["error"]["valid_content"] = 'Nachricht enthält eine ungültige eingabe.';
+$lang["success"] = 'Nachricht erfolgreich verschickt.';
 
 //Setup VIM: ex: et ts=2 enc=utf-8 :
 ?>

@@ -35,6 +35,7 @@ $lang["error"]["valid_email"] = 'Email address has invalid input.';
 $lang["error"]["valid_subject"] = 'Subject has invalid input.';
 $lang["error"]["valid_to"] = 'Destination address has invalid input.';
 $lang["error"]["valid_content"] = 'Comment has invalid input.';
+$lang["success"] = 'Mail sent successfully.';
 
 //Setup VIM: ex: et ts=2 enc=utf-8 :
 ?>

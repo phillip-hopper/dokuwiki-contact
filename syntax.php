@@ -32,12 +32,12 @@ require_once(dirname(__file__).'/recaptchalib.php');
 class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 
 	public static $captcha = false;
-	public static $last_form_id = 1;
+	public static $lastFormId = 1;
 
-	private $form_id = 0;
+	private $formId = 0;
 	private $status = 1;
-	private $status_message;
-	private $error_flags = array();
+	private $statusMessage;
+	private $errorFlags = array();
 
 	/**
 	 * General information about the plugin.
@@ -71,7 +71,7 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
  	 * Where to sort in?
  	 */
 	public function getSort(){
-		return 309;
+		return 300;
 	}
 
 	/**
@@ -107,7 +107,7 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 	public function render($mode, &$renderer, $data) {
 		if($mode == 'xhtml'){
 			// Define unique form id
-			$this->form_id = syntax_plugin_contactmodern::$last_form_id++;
+			$this->formId = syntax_plugin_contactmodern::$lastFormId++;
 
 			// Disable cache
 			$renderer->info['cache'] = false;
@@ -122,7 +122,7 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 	 */
 	protected function _send_contact($captcha=false){
 		global $conf;
-		global $lang;
+		$lang = $this->getLang("error");
 
 		require_once(DOKU_INC.'inc/mail.php');
 		$name = $_POST['name'];
@@ -139,15 +139,15 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 
 		// name entered?
 		if(strlen($name) < 2)
-			$this->_set_error('name', $lang["error"]["name"]);
+			$this->_set_error('name', $lang["name"]);
 
 		// email correctly entered?
 		if(!$this->_check_email_address($email))
-			$this->_set_error('email', $lang["error"]["email"]);
+			$this->_set_error('email', $lang["email"]);
 
 		// comment entered?
 		if(strlen($_POST['content']) < 10)
-			$this->_set_error('content', $lang["error"]["content"]);
+			$this->_set_error('content', $lang["content"]);
 
 		// checks recaptcha answer
 		if($conf['plugin']['contactmodern']['captcha'] == 1 && $captcha == true) {
@@ -156,38 +156,38 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 						$_POST["recaptcha_challenge_field"],
 						$_POST["recaptcha_response_field"]);
 			if (!$resp->is_valid){
-				$this->_set_error('captcha', $lang["error"]["captcha"]);
+				$this->_set_error('captcha', $lang["captcha"]);
 			}
 		}
 
 		// A bunch of tests to make sure it's legitimate mail and not spoofed
 		// This should make it not very easy to do injection
 		if (eregi("\r",$name) || eregi("\n",$name) || eregi("MIME-Version: ",$name) || eregi("Content-Type: ",$name)){
-			$this->_set_error('name', $lang["error"]["valid_name"]);
+			$this->_set_error('name', $lang["valid_name"]);
 		}
 		if (eregi("\r",$email) || eregi("\n",$email) || eregi("MIME-Version: ",$email || eregi("Content-Type: ",$email))){
-			$this->_set_error('email', $lang["error"]["valid_email"]);
+			$this->_set_error('email', $lang["valid_email"]);
 		}
 		if (eregi("\r",$subject) || eregi("\n",$subject) || eregi("MIME-Version: ",$subject) || eregi("Content-Type: ",$subject)){
-			$this->_set_error('subject', $lang["error"]["valid_subject"]);
+			$this->_set_error('subject', $lang["valid_subject"]);
 		}
 		if (eregi("\r",$to) || eregi("\n",$to) || eregi("MIME-Version: ",$to) || eregi("Content-Type: ",$to)){
-			$this->_set_error('to', $lang["error"]["valid_to"]);
+			$this->_set_error('to', $lang["valid_to"]);
 		}
 		if (eregi("MIME-Version: ",$comment) || eregi("Content-Type: ",$comment)){
-			$this->_set_error('content', $lang["error"]["valid_content"]);
+			$this->_set_error('content', $lang["valid_content"]);
 		}
 
-		// There is no status message, also everything is ok
-		if(empty($this->status_message)) {
+		// Status has not changed.
+		if($this->status != 0) {
 			// send only if comment is not empty
 			// this should never be the case anyway because the form has
 			// validation to ensure a non-empty comment
 			if (trim($comment, " \t") != ''){
 				if (mail_send($to, $subject, $comment, $to)){
-					$this->status_message = "Mail sent successfully.";
+					$this->statusMessage = $this->getLang("success");
 				} else {
-					$this->_set_error('unknown', $lang["error"]["unknown"]);
+					$this->_set_error('unknown', $lang["unknown"]);
 				}
 				//we're using the included mail_send command because it's
 				//already there and it's easy to use and it works
@@ -202,8 +202,8 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 	 */
 	protected function _set_error($type, $message) {
 		$this->status = 0;
-		$this->status_message .= empty($this->status_message)?$message:'<br>'.$message;
-		$this->error_flags[$type] = true;
+		$this->statusMessage .= empty($this->statusMessage)?$message:'<br>'.$message;
+		$this->errorFlags[$type] = true;
 	}
 
 	/**
@@ -248,17 +248,16 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 	 * and creates the input form.
 	 */
 	protected function _contact($data){
-		global $lang;
 		global $conf;
 
 		// Is there none captche on the side?
 		$captcha = ($conf['plugin']['contactmodern']['captcha'] == 1 && syntax_plugin_contactmodern::$captcha == false)?true:false;
 
-		$ret = "<form action=\"".$_SERVER['REQUEST_URI']."#form-".$this->form_id."\" method=\"POST\"><a name=\"form-".$this->form_id."\"></a>";
+		$ret = "<form action=\"".$_SERVER['REQUEST_URI']."#form-".$this->formId."\" method=\"POST\"><a name=\"form-".$this->formId."\"></a>";
 		$ret .= "<table class=\"inline\">";
 
 		// Send message and give feedback
-		if (isset($_POST['submit-form-'.$this->form_id]))
+		if (isset($_POST['submit-form-'.$this->formId]))
 			if($this->_send_contact($captcha))
 				$ret .= $this->_show_message();
 
@@ -284,7 +283,7 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 		if (isset($data['to']))	
 			$ret .= "<input type=\"hidden\" name=\"to\" value=\"".$data['to']."\" />";
 		$ret .= "<input type=\"hidden\" name=\"do\" value=\"show\" />";
-		$ret .= "<input type=\"submit\" name=\"submit-form-".$this->form_id."\" value=\"".$this->getLang("contact")."\" />";
+		$ret .= "<input type=\"submit\" name=\"submit-form-".$this->formId."\" value=\"".$this->getLang("contact")."\" />";
 		$ret .= "</p></form>";
 
 		return $ret;
@@ -295,7 +294,7 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 	 */
 	protected function _show_message() {
 		return '<tr><td colspan="2">'
-		. '<p class="'.(($this->status == 0)?'contact_error':'contact_success').'">'.$this->status_message.'</p>'
+		. '<p class="'.(($this->status == 0)?'contact_error':'contact_success').'">'.$this->statusMessage.'</p>'
 		. '</td></tr>';
 	}
 
@@ -303,8 +302,8 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 	 * Renders a table row.
 	 */
 	protected function _table_row($label, $name, $type) {
-		$value = (isset($_POST['submit-form-'.$this->form_id]) && $this->status == 0)?$_POST[$name]:'';
-		$class = ($this->error_flags[$name] == true)?'class="error_field"':'';
+		$value = (isset($_POST['submit-form-'.$this->formId]) && $this->status == 0)?$_POST[$name]:'';
+		$class = ($this->errorFlags[$name] == true)?'class="error_field"':'';
 		$row = '<tr><td>'.$label.'</td><td>';
 		if($type == 'textarea')
 			$row .= '<textarea name="'.$name.'" wrap="on" cols="40" rows="6" '.$class.'>'.$value.'</textarea>';

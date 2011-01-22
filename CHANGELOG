@@ -1,3 +1,9 @@
+2011-01-22  Marvin Thomas Rabe  <m.rabe@echtzeitraum.de>
+
+* Fixed localisation bug.
+* Added localization for success message.
+* Renamed some variables.
+
 2011-01-05  Marvin Thomas Rabe  <m.rabe@echtzeitraum.de>
 
 * Changelog added.

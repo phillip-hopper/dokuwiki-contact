@@ -13,7 +13,6 @@ It is nearly the same form like that by Bob Baddeley, except:
 
   - reCaptcha instead of "Enter HUMAN to verify."
   - Captcha can be disabled.
-  - Better German translation.
   - Improved configuration.
   - Improved anti cache work-around.
   - Intelligent email address checkup.
@@ -21,6 +20,9 @@ It is nearly the same form like that by Bob Baddeley, except:
   - It jumps back to the form after submitting.
 
 If you have some more ideas, feel free to contact me.
+
+Following languages are  available: German, English, Russian (partially),
+Portuguese (partially), French (partially)
 
 ===== Requirements =====
 
@@ -36,7 +38,7 @@ You can receive the needed reCaptcha keys on http://www.google.com/recaptcha.
 
 Upload this folder to your Dokuwiki plugin folder.
 
-In //Admin -> Configuration settings// you have to set up a valid email address
+In Admin -> Configuration settings you have to set up a valid email address
 and (if you want) your reCaptcha keys. You can modify and redistribute it under
 the terms of the GPL Version 3.
 
