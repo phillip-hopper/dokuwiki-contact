@@ -49,7 +49,7 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 			'date'	 => '2011-01-05',
 			'name'	 => 'Modern Contact Plugin',
 			'desc'	 => 'Creates a contact form to email the webmaster. Secured with recaptcha.',
-			'url'	 => 'http://echtzeitraum.de/plugin/dokuwiki/contact',
+			'url'	 => 'http://wiki.echtzeitraum.de/plugin/dokuwiki/contact',
 		);
 	}
 
