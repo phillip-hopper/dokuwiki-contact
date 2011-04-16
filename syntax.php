@@ -46,7 +46,7 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 		return array(
 			'author' => 'Marvin Thomas Rabe',
 			'email'  => 'm.rabe@echtzeitraum.de',
-			'date'	 => '2011-01-05',
+			'date'	 => '2011-04-16',
 			'name'	 => 'Modern Contact Plugin',
 			'desc'	 => 'Creates a contact form to email the webmaster. Secured with recaptcha.',
 			'url'	 => 'http://wiki.echtzeitraum.de/plugin/dokuwiki/contact',
@@ -249,6 +249,7 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 	 */
 	protected function _contact($data){
 		global $conf;
+		global $USERINFO;
 
 		// Is there none captche on the side?
 		$captcha = ($conf['plugin']['contactmodern']['captcha'] == 1 && syntax_plugin_contactmodern::$captcha == false)?true:false;
@@ -262,8 +263,8 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 				$ret .= $this->_show_message();
 
 		// Build table
-		$ret .= $this->_table_row($this->getLang("name"), 'name', 'text');
-		$ret .= $this->_table_row($this->getLang("email"), 'email', 'text');
+		$ret .= $this->_table_row($this->getLang("name"), 'name', 'text', $USERINFO['name']);
+		$ret .= $this->_table_row($this->getLang("email"), 'email', 'text', $USERINFO['mail']);
 		if (!isset($data['subj']))
 			$ret .= $this->_table_row($this->getLang("subject"), 'subject', 'text');
 		$ret .= $this->_table_row($this->getLang("content"), 'content', 'textarea');
@@ -304,8 +305,8 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 	/**
 	 * Renders a table row.
 	 */
-	protected function _table_row($label, $name, $type) {
-		$value = (isset($_POST['submit-form-'.$this->formId]) && $this->status == 0)?$_POST[$name]:'';
+	protected function _table_row($label, $name, $type, $default='') {
+		$value = (isset($_POST['submit-form-'.$this->formId]) && $this->status == 0)?$_POST[$name]:$default;
 		$class = ($this->errorFlags[$name])?'class="error_field"':'';
 		$row = '<tr><td>'.$label.'</td><td>';
 		if($type == 'textarea')

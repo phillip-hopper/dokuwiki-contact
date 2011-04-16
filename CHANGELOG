@@ -1,3 +1,8 @@
+2011-04-16  Marvin Thomas Rabe  <m.rabe@echtzeitraum.de>
+
+* If user is already logged in then email and name field are already filled.
+* Updated path to plugin wiki site.
+
 2011-01-22  Marvin Thomas Rabe  <m.rabe@echtzeitraum.de>
 
 * Fixed localisation bug.
