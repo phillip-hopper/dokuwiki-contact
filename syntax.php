@@ -46,7 +46,7 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 		return array(
 			'author' => 'Marvin Thomas Rabe',
 			'email'  => 'm.rabe@echtzeitraum.de',
-			'date'	 => '2011-04-16',
+			'date'	 => '2011-09-14',
 			'name'	 => 'Modern Contact Plugin',
 			'desc'	 => 'Creates a contact form to email the webmaster. Secured with recaptcha.',
 			'url'	 => 'http://wiki.echtzeitraum.de/plugin/dokuwiki/contact',
