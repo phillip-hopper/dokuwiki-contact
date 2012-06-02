@@ -184,7 +184,7 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 			// this should never be the case anyway because the form has
 			// validation to ensure a non-empty comment
 			if (trim($comment, " \t") != ''){
-				if (mail_send($to, $subject, $comment, $to)){
+				if (mail_send($to, $subject, $comment, $to, '', '', 'Reply-to: '.$email)){
 					$this->statusMessage = $this->getLang("success");
 				} else {
 					$this->_set_error('unknown', $lang["unknown"]);
