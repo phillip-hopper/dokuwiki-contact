@@ -3,7 +3,7 @@
 /* Modern Contact Plugin for Dokuwiki
  * 
  * Copyright (C) 2008 Bob Baddeley (bobbaddeley.com)
- * Copyright (C) 2010-2011 Marvin Thomas Rabe (echtzeitraum.de)
+ * Copyright (C) 2010-2012 Marvin Thomas Rabe (marvinrabe.de)
  * 
  * This program is free software; you can redistribute it and/or modify it under the terms
  * of the GNU General Public License as published by the Free Software Foundation; either
@@ -20,7 +20,7 @@
  * Embed a contact form onto any page
  * @license GNU General Public License 3 <http://www.gnu.org/licenses/>
  * @author Bob Baddeley <bob@bobbaddeley.com>
- * @author Marvin Thomas Rabe <m.rabe@echtzeitraum.de>
+ * @author Marvin Thomas Rabe <mrabe@marvinrabe.de>
  */
 
 if(!defined('DOKU_INC')) define('DOKU_INC',realpath(dirname(__FILE__).'/../../').'/');
@@ -45,11 +45,11 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 	public function getInfo(){
 		return array(
 			'author' => 'Marvin Thomas Rabe',
-			'email'  => 'm.rabe@echtzeitraum.de',
-			'date'	 => '2011-09-14',
+			'email'  => 'mrabe@marvinrabe.de',
+			'date'	 => '2012-06-05',
 			'name'	 => 'Modern Contact Plugin',
 			'desc'	 => 'Creates a contact form to email the webmaster. Secured with recaptcha.',
-			'url'	 => 'http://wiki.echtzeitraum.de/plugin/dokuwiki/contact',
+			'url'	 => 'https://github.com/marvinrabe/dokuwiki-contact',
 		);
 	}
 
