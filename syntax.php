@@ -46,7 +46,7 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 		return array(
 			'author' => 'Marvin Thomas Rabe',
 			'email'  => 'mrabe@marvinrabe.de',
-			'date'	 => '2012-06-05',
+			'date'	 => '2012-06-06',
 			'name'	 => 'Modern Contact Plugin',
 			'desc'	 => 'Creates a contact form to email the webmaster. Secured with recaptcha.',
 			'url'	 => 'https://github.com/marvinrabe/dokuwiki-contact',
@@ -82,7 +82,7 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 	}
 
 	/**
-	 * Handle the match
+	 * Handle the match.
 	 */
 	public function handle($match, $state, $pos, &$handler){
 		if (isset($_REQUEST['comment']))
@@ -207,7 +207,7 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 	}
 
 	/**
-	 * Validate Email. From: http://www.ilovejackdaniels.com/php/email-address-validation
+	 * Validate email address. From: http://www.ilovejackdaniels.com/php/email-address-validation
 	 */
 	protected function _check_email_address($email) {
 		// First, we check that there's one @ symbol, 
@@ -244,8 +244,7 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 	}
 
 	/**
-	 * Does the contact form xhtml creation. Adds some javascript to validate the form
-	 * and creates the input form.
+	 * Does the contact form xhtml creation.
 	 */
 	protected function _contact($data){
 		global $conf;

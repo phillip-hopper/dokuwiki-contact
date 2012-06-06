@@ -11,5 +11,3 @@ $lang['captcha'] = 'Włączona captcha';
 $lang['recaptchakey'] = 'Recaptcha - klucz publiczny';
 $lang['recaptchasecret'] = 'Recaptcha - klucz prywatny';
 $lang['recaptchalayout'] = 'Wygląd Recaptcha';
-
-?>

@@ -4,7 +4,7 @@
  *
  * @license GNU General Public License 3 <http://www.gnu.org/licenses/>
  * @author Wolfgang Studer
- * @author Marvin Thomas Rabe <m.rabe@echtzeitraum.de>
+ * @author Marvin Thomas Rabe <mrabe@marvinrabe.de>
  */
 
 // settings must be present and set appropriately for the language
@@ -36,6 +36,3 @@ $lang["error"]["valid_subject"] = 'Betreff enthält eine ungültige eingabe.';
 $lang["error"]["valid_to"] = 'Ziel Adresse enthält eine ungültige eingabe.';
 $lang["error"]["valid_content"] = 'Nachricht enthält eine ungültige eingabe.';
 $lang["success"] = 'Nachricht erfolgreich verschickt.';
-
-//Setup VIM: ex: et ts=2 enc=utf-8 :
-?>

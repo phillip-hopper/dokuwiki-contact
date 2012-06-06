@@ -35,6 +35,3 @@ $lang["error"]["valid_subject"] = 'Nieprawidłowy wpis w temacie.';
 $lang["error"]["valid_to"] = 'Adres docelowy jest nieprawidłowy.';
 $lang["error"]["valid_content"] = 'Nieprawidłowy wpis w polu wiadomości.';
 $lang["success"] = 'E-mail został wysłany.';
-
-//Setup VIM: ex: et ts=2 enc=utf-8 :
-?>

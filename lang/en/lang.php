@@ -4,7 +4,7 @@
  *
  * @license GNU General Public License 3 <http://www.gnu.org/licenses/>
  * @author Bob Baddeley <bob@bobbaddeley.com>
- * @author Marvin Thomas Rabe <m.rabe@echtzeitraum.de>
+ * @author Marvin Thomas Rabe <mrabe@marvinrabe.de>
  */
 
 // settings must be present and set appropriately for the language
@@ -36,6 +36,3 @@ $lang["error"]["valid_subject"] = 'Subject has invalid input.';
 $lang["error"]["valid_to"] = 'Destination address has invalid input.';
 $lang["error"]["valid_content"] = 'Comment has invalid input.';
 $lang["success"] = 'Mail sent successfully.';
-
-//Setup VIM: ex: et ts=2 enc=utf-8 :
-?>

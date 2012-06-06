@@ -4,7 +4,7 @@
  *
  * @license GNU General Public License 3 <http://www.gnu.org/licenses/>
  * @author Bob Baddeley <bob@bobbaddeley.com>
- * @author Marvin Thomas Rabe <m.rabe@echtzeitraum.de>
+ * @author Marvin Thomas Rabe <mrabe@marvinrabe.de>
  */
 
 $conf['default'] = 'webmaster@example.com';
