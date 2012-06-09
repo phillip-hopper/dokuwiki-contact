@@ -17,7 +17,15 @@ p. It is nearly the same form like that by Bob Baddeley, except:
 
 p. If you have some more ideas, feel free to contact me.
 
-p. Following languages are  available: German, English, Russian (partially), Portuguese (partially), French (partially), Polish (by Alex Setlak), Spanish (by Cristian Wente)
+p. Following languages are  available:
+
+* English
+* French (partially)
+* German
+* Polish (by Alex Setlak)
+* Portuguese (partially)
+* Russian (partially)
+* Spanish (by Cristian Wente)
 
 h2. Requirements
 
