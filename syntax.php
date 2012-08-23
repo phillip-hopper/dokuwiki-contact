@@ -29,7 +29,7 @@ require_once(DOKU_PLUGIN.'syntax.php');
 require_once(DOKU_INC.'inc/auth.php');
 require_once(dirname(__file__).'/recaptchalib.php');
 
-class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
+class syntax_plugin_moderncontact extends DokuWiki_Syntax_Plugin {
 
 	public static $captcha = false;
 	public static $lastFormId = 1;
@@ -78,7 +78,7 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
  	 * Connect pattern to lexer.
  	 */
 	public function connectTo($mode) {
-		$this->Lexer->addSpecialPattern('\{\{contact>[^}]*\}\}',$mode,'plugin_contactmodern');
+		$this->Lexer->addSpecialPattern('\{\{contact>[^}]*\}\}',$mode,'plugin_moderncontact');
 	}
 
 	/**
@@ -107,7 +107,7 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 	public function render($mode, &$renderer, $data) {
 		if($mode == 'xhtml'){
 			// Define unique form id
-			$this->formId = syntax_plugin_contactmodern::$lastFormId++;
+			$this->formId = syntax_plugin_moderncontact::$lastFormId++;
 
 			// Disable cache
 			$renderer->info['cache'] = false;
@@ -132,9 +132,9 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 		$comment .= $email."\r\n\n";
 		$comment .= $_POST['content'];
 		if (isset($_REQUEST['to'])){
-			$to = $conf['plugin']['contactmodern'][$_POST['to']];
+			$to = $conf['plugin']['moderncontact'][$_POST['to']];
 		} else {
-			$to = $conf['plugin']['contactmodern']['default'];
+			$to = $conf['plugin']['moderncontact']['default'];
 		}
 
 		// name entered?
@@ -150,8 +150,8 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 			$this->_set_error('content', $lang["content"]);
 
 		// checks recaptcha answer
-		if($conf['plugin']['contactmodern']['captcha'] == 1 && $captcha == true) {
-			$resp = recaptcha_check_answer ($conf['plugin']['contactmodern']['recaptchasecret'],
+		if($conf['plugin']['moderncontact']['captcha'] == 1 && $captcha == true) {
+			$resp = recaptcha_check_answer ($conf['plugin']['moderncontact']['recaptchasecret'],
 						$_SERVER["REMOTE_ADDR"],
 						$_POST["recaptcha_challenge_field"],
 						$_POST["recaptcha_response_field"]);
@@ -251,7 +251,7 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 		global $USERINFO;
 
 		// Is there none captche on the side?
-		$captcha = ($conf['plugin']['contactmodern']['captcha'] == 1 && syntax_plugin_contactmodern::$captcha == false)?true:false;
+		$captcha = ($conf['plugin']['moderncontact']['captcha'] == 1 && syntax_plugin_moderncontact::$captcha == false)?true:false;
 
 		$ret = "<form action=\"".$_SERVER['REQUEST_URI']."#form-".$this->formId."\" method=\"POST\"><a name=\"form-".$this->formId."\"></a>";
 		$ret .= "<table class=\"inline\">";
@@ -275,9 +275,9 @@ class syntax_plugin_contactmodern extends DokuWiki_Syntax_Plugin {
 			}
 			$ret .= "<tr><td colspan=\"2\">"
 			. "<script type=\"text/javascript\">var RecaptchaOptions = { lang : '".$conf['lang']."', "
-			. "theme : '".$conf['plugin']['contactmodern']['recaptchalayout']."' };</script>"
-			. recaptcha_get_html($conf['plugin']['contactmodern']['recaptchakey'])."</td></tr>";
-			syntax_plugin_contactmodern::$captcha = true;
+			. "theme : '".$conf['plugin']['moderncontact']['recaptchalayout']."' };</script>"
+			. recaptcha_get_html($conf['plugin']['moderncontact']['recaptchakey'])."</td></tr>";
+			syntax_plugin_moderncontact::$captcha = true;
 		}
 
 		$ret .= "</table><p>";
