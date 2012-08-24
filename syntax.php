@@ -122,6 +122,7 @@ class syntax_plugin_moderncontact extends DokuWiki_Syntax_Plugin {
 	 */
 	protected function _send_contact($captcha=false){
 		global $conf;
+		global $auth;
 		$lang = $this->getLang("error");
 
 		require_once(DOKU_INC.'inc/mail.php');
@@ -132,9 +133,12 @@ class syntax_plugin_moderncontact extends DokuWiki_Syntax_Plugin {
 		$comment .= $email."\r\n\n";
 		$comment .= $_POST['content'];
 		if (isset($_REQUEST['to'])){
-			$to = $conf['plugin']['moderncontact'][$_POST['to']];
+			$user = $auth->getUserData($_POST['to']);
+			if (isset($user)) {
+			   $to = $user['mail'];
+			}
 		} else {
-			$to = $conf['plugin']['moderncontact']['default'];
+			$to = $this->getConf('default');
 		}
 
 		// name entered?
@@ -184,7 +188,7 @@ class syntax_plugin_moderncontact extends DokuWiki_Syntax_Plugin {
 			// this should never be the case anyway because the form has
 			// validation to ensure a non-empty comment
 			if (trim($comment, " \t") != ''){
-				if (mail_send($to, $subject, $comment, $to, '', '', 'Reply-to: '.$email)){
+				if (mail_send($to, $subject, $comment, $email, '', '', 'Reply-to: '.$email)){
 					$this->statusMessage = $this->getLang("success");
 				} else {
 					$this->_set_error('unknown', $lang["unknown"]);
