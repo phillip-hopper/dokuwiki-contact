@@ -46,7 +46,7 @@ class syntax_plugin_moderncontact extends DokuWiki_Syntax_Plugin {
 		return array(
 			'author' => 'Marvin Thomas Rabe',
 			'email'  => 'mrabe@marvinrabe.de',
-			'date'	 => '2012-06-06',
+			'date'	 => '2013-01-25',
 			'name'	 => 'Modern Contact Plugin',
 			'desc'	 => 'Creates a contact form to email the webmaster. Secured with recaptcha.',
 			'url'	 => 'https://github.com/marvinrabe/dokuwiki-contact',
