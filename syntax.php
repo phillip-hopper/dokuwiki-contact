@@ -96,7 +96,18 @@ class syntax_plugin_moderncontact extends DokuWiki_Syntax_Plugin {
 		$params = explode('|',$match);
 		foreach($params as $param){
 			$splitparam = explode('=',$param);
-			$data[$splitparam[0]] = $splitparam[1];
+			//multiple targets/profils possible for the email
+			//add multiple to field in the dokuwiki page code
+			// example : {{contact>to=profile1|to=profile2|subj=Feedback from Site}}
+			if ($splitparam[0]=='to'){
+				if (isset($data[$splitparam[0]])){
+					$data[$splitparam[0]] .= ",".$splitparam[1]; //it is a "to" param but not the first
+				}else{
+					$data[$splitparam[0]] = $splitparam[1]; // it is the first "to" param
+				}
+			}else{
+				$data[$splitparam[0]] = $splitparam[1]; // it is not a "to" param
+			}
 		}
 		return $data;
 	}
@@ -133,9 +144,17 @@ class syntax_plugin_moderncontact extends DokuWiki_Syntax_Plugin {
 		$comment .= $email."\r\n\n";
 		$comment .= $_POST['content'];
 		if (isset($_REQUEST['to'])){
-			$user = $auth->getUserData($_POST['to']);
-			if (isset($user)) {
-			   $to = $user['mail'];
+			//multiple targets/profils possible for the email
+			$usersList = explode(',',$_POST['to']); 
+			foreach($usersList as $userId){
+				$user = $auth->getUserData($userId);
+				if (isset($user)) {
+					if (!empty($to)){
+						$to .= ",".$user['mail'];
+					}else{
+						$to = $user['mail'];
+					}
+				}
 			}
 		} else {
 			$to = $this->getConf('default');
