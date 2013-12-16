@@ -25,17 +25,15 @@ $lang["content"] = 'Message';
 $lang["contact"] = 'Envoyer';
 
 // error messages
-$lang["error"]["unknown"] = 'Mail not sent. Please contact the administrator.';
-$lang["error"]["name"] = 'Please enter a name. Should be at least 2 characters.';
-$lang["error"]["email"] = 'Please enter your email address. It must be valid.';
-$lang["error"]["content"] = 'Please add a comment. Should be at least 10 characters.';
-$lang["error"]["captcha"] = 'Mail not sent. You could not be verified as a human.';
-$lang["error"]["valid_name"] = 'Name has invalid input.';
-$lang["error"]["valid_email"] = 'Email address has invalid input.';
-$lang["error"]["valid_subject"] = 'Subject has invalid input.';
-$lang["error"]["valid_to"] = 'Destination address has invalid input.';
-$lang["error"]["valid_content"] = 'Comment has invalid input.';
-$lang["success"] = 'Mail sent successfully.';
 
-//Setup VIM: ex: et ts=2 enc=utf-8 :
-?>
+$lang["error"]["unknown"] = 'Email non envoyé. Merci de contacter votre administrateur.'; 
+$lang["error"]["name"] = 'Merci de saisir votre nom. Celui-ci doit être composé d’au moins 2 caractères.';
+$lang["error"]["email"] = 'Merci de saisir votre adresse email. Attention celle-ci doit être valide.';
+$lang["error"]["content"] = 'Merci d’ajouter un message d’au moins 10 caractères.';
+$lang["error"]["captcha"] = 'Email non envoyé. Vous n’avez pas été vérifié comme étant un humain.';
+$lang["error"]["valid_name"] = 'Votre nom n’est pas valide.';
+$lang["error"]["valid_email"] = 'Votre adresse email n’est pas valide.';
+$lang["error"]["valid_subject"] = 'Le sujet n’est pas valide.';
+$lang["error"]["valid_to"] = 'L’adresse de destination n’est pas valide.';
+$lang["error"]["valid_content"] = 'Le message n’est pas valide.';
+$lang["success"] = 'L’email a été envoyé avec succès.';
